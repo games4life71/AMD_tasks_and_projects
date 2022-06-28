@@ -154,11 +154,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cord_Phones.cpp" />
+    <ClCompile Include="Earplugs.cpp" />
     <ClCompile Include="Electronics.cpp" />
+    <ClCompile Include="Mobile_Phones.cpp" />
+    <ClCompile Include="Phones.cpp" />
+    <ClCompile Include="SoundSytems.cpp" />
+    <ClCompile Include="Stereos.cpp" />
     <ClCompile Include="task1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cord_Phones.h" />
+    <ClInclude Include="Earplugs.h" />
     <ClInclude Include="Electronics.h" />
+    <ClInclude Include="Mobile_Phones.h" />
+    <ClInclude Include="Phones.h" />
+    <ClInclude Include="SoundSytems.h" />
+    <ClInclude Include="Stereos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
