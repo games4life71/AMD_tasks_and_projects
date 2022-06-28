@@ -2,24 +2,20 @@
 #include <string>
 class Electronics
 {
-protected:
-   std::string name;
-   int id;
-   int year_of_fabrication; 
 
 public :
    //getters and setters to promote encapsulation 
-   virtual void PrintInfo()  ;
+   virtual void PrintInfo() =0;
    
-   virtual void SetiD(int id) ;
+   virtual void SetiD(int id)=0 ;
    
-   virtual void SetName(std::string name) ;
-   
-   virtual void SetYear(int year) ;
-   
-   virtual int  GetYear()  ;
-   
-   virtual int GetID() ;
-   
-   virtual std::string  GetName();
+    virtual void SetName(std::string name) =0;
+   //
+    virtual void SetYear(int year)=0 ;
+   //
+    virtual int  GetYear() =0 ;
+   //
+   virtual int GetID() =0;
+   //
+    virtual std::string  GetName()=0;
 };

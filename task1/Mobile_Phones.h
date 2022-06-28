@@ -12,35 +12,28 @@ private :
     
 public:
      Mobile_Phones(); // default constructor
-     Mobile_Phones(int year , std::string name , std::string display_name , std::string IMEI , int id)
-     {
-        this->year_of_fabrication = year;
-         this->display_name = display_name;
-         this->id = id;
-         this->name = name;
-         this->IMEI = IMEI;
-
-     }
-
-    void SetiD(int id) override;
+     Mobile_Phones(int year , std::string name , std::string display_name , std::string IMEI , int id);
+     void PrintInfo() override;
+    
+    void SetiD(int id) ;
 
      void SetDisplayName(std::string name) ;
 
      void SetIMEI(std::string IMEI) ;
 
-     void SetName(std::string name) override;
+     void SetName(std::string name) ;
 
-     void SetYear(int year ) override;
+     void SetYear(int year ) ;
 
-     std::string GetName() override;
+     std::string GetName();
 
      std::string GetDisplayName() ;
 
      std::string GetIMEI();
 
-     int GetYear() override;
-     int GetID() override;
-     int GetBatteryLife() override;
+     int GetYear() ;
+     int GetID() ;
+     int GetBatteryLife() ;
 
-    void SetBatteryLife(int value) override;
+    void SetBatteryLife(int value) ;
 };

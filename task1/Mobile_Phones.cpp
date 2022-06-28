@@ -1,5 +1,19 @@
 ﻿#include "Mobile_Phones.h"
 
+Mobile_Phones::Mobile_Phones(int year, std::string name, std::string display_name, std::string IMEI, int id)
+{
+    this->year_of_fabrication = year;
+    this->display_name = display_name;
+    this->id = id;
+    this->name = name;
+    this->IMEI = IMEI;
+
+}
+void Mobile_Phones::PrintInfo()
+{
+    printf("The info is ");
+}
+
 void Mobile_Phones::SetiD(int id)
 {
     this->id = id ; 

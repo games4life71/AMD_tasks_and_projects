@@ -10,7 +10,7 @@ private:
     
 public:
 
-     Earplugs(); //default constructor
+    Earplugs(); //default constructor
     Earplugs(int id , int year, std::string name , std::string type , int decibels );
 
     void PrintInfo()   override final;
@@ -21,13 +21,21 @@ public:
 
     void SetYear(int year) override final;
 
+    void SetDecibelPower(int value) override
+    {
+        this->decibel_power = value;
+    }
+    void SetType(std::string type );
+    
     int  GetYear()override  final;
 
     int GetID() override final;
 
     std::string  GetName() override final;
-
+    int GetDecibels() override
+    {
+        return this->decibel_power;
+    };
     std::string GetType();
 
-    void SetType(std::string type );
 };

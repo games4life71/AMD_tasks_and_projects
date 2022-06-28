@@ -32,6 +32,13 @@ Stereos(); // default constructor ;
     std::string  GetName() override final;
 
     void SetNumberOf(int value);
-
+    void SetDecibelPower(int value) override
+    {
+        this->decibel_power = value;
+    }
+    int GetDecibels() override
+    {
+        return this->decibel_power;
+    };
     int GetNumberOf();
 };

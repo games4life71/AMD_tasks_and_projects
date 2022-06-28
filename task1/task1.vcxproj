@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Container_Class.cpp" />
     <ClCompile Include="Cord_Phones.cpp" />
     <ClCompile Include="Earplugs.cpp" />
     <ClCompile Include="Electronics.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="task1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Container_Class.h" />
     <ClInclude Include="Cord_Phones.h" />
     <ClInclude Include="Earplugs.h" />
     <ClInclude Include="Electronics.h" />

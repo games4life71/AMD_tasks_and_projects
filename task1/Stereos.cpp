@@ -3,6 +3,10 @@ void Stereos::PrintInfo()
 {
     printf("The name is %s , the id is %d , the year of fabrication is %d , power of decibels is %d , with %d number of speakers " , this->GetName(),this->GetID() , this->GetYear(), this->GetDecibels(), this->GetNumberOf());        
 }
+Stereos::Stereos()
+{
+    
+}
 
 void Stereos::SetiD(int id)
 {

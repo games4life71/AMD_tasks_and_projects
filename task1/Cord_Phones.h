@@ -12,7 +12,7 @@ private :
 public:
     Cord_Phones(); //default constructor
     Cord_Phones(int year, std::string manufacter ,  std::string name , int id );
-
+   void PrintInfo() override;
     void SetiD(int id) override;
 
     void SetName(std::string name) override;

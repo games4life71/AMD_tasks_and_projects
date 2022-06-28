@@ -8,6 +8,10 @@ Cord_Phones::Cord_Phones(int year, std::string manufacter, std::string name, int
     this->id = id;
     this->manufacter = manufacter;
 }
+void Cord_Phones::PrintInfo()
+{
+    printf("the info is ... ");
+}
 
 void Cord_Phones::SetiD(int id)
 {

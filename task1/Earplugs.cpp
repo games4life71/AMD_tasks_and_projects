@@ -1,5 +1,11 @@
 ﻿#include "Earplugs.h"
 
+
+
+Earplugs::Earplugs()
+{
+    
+}
 Earplugs::Earplugs(int id, int year, std::string name, std::string type, int decibels)
 {
     this->id = id;
