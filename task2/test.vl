@@ -1,0 +1,53 @@
+//incercari simple in verilog 
+
+//OR GATE 
+
+
+module or_gate(output out  , input a,b);
+
+or(out,a,b);
+endmodule
+
+module and_gate(output out , input a,b);
+and(out,a,b);
+endmodule
+
+module xor_gate(output out , input a,b);
+xor(out , a,b);
+endmodule
+
+module nand_gate(output out , input a,b);
+nand(out,a,b);
+endmodule
+
+module not_gate(output out , input a );
+not(out ,a);
+endmodule
+
+
+module buffer_gate(output out , input a,b);
+buf(out,a);
+endmodule
+
+module xnor(output out , input a ,b);
+xnor(out,a,b);
+endmodule
+
+
+//LATCHES GATES
+
+module rs_latch(input r ,   input s , output Q , output Qn);
+nor_gate(Q,r,Qn);  // ???? not sure its ok 
+nor_gate(Qn,s,Q);
+endmodule
+
+//decoder 
+
+module decoder_3t_8(input [2:0] addr , output [7:0] out);
+
+
+
+//magic code ??? 
+
+
+endmodule
