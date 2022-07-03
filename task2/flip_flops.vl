@@ -1,0 +1,90 @@
+module SR_FF(
+input S,R,
+output Q ,Qn
+);
+
+    always@(posedge clk) begin 
+
+    if(S == 1 )  begin 
+
+        Q<= 1;
+        Qn <= 0;
+    
+    end
+
+   else if (R == 1) begin 
+
+    Q<=0;
+    Qn <=1;
+   
+   end
+ else if( S == 0 && R == 0  )begin 
+   
+Q<=Q;
+Qn<=Qn;
+
+ end 
+
+    end
+
+endmodule
+
+
+
+module JK_FF(
+input j,k,
+output Q,Qn
+);
+
+
+always@(posedge clk) begin
+
+case ({j,k})  
+         2'b00 :  q <= q;  
+         2'b01 :  q <= 0;  
+         2'b10 :  q <= 1;  
+         2'b11 :  q <= ~q;  
+      endcase  
+
+
+end 
+
+endmodule
+
+module D_FF(
+
+input D,clk,
+output Q,Qn
+
+);
+
+always@(posedge clk) begin
+
+
+Q<=D;  //simple D Flip Flop with no reset 
+Qn <=~D;
+end
+
+endmodule 
+
+
+
+module T_FF(
+input clk , T,rst
+output Q ,Qn
+);
+
+
+always@(posedge clk) begin
+
+if(!rst) 
+Q<=0;
+
+else if(T)
+Q<=Qn;
+else 
+Q<=Q;
+
+end 
+
+endmodule

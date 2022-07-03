@@ -1,0 +1,19 @@
+module half_adder(input a , b, output sum , cout);
+
+
+
+//it can add just 2 bits 
+ sum = xor(a,b);
+ cout = and(a,b);
+endmodule 
+
+
+module full_adder(
+    input a ,b ,cin,
+    output cout,sum);
+);
+
+assign cout = a&b | b&cin | a&cin; //formula pt carry out 
+assign sum = a^b^cin; //formula pentru sum 
+
+endmodule

@@ -1,0 +1,8 @@
+module multiplexer(
+input a,b,sel, //2 intrari si select
+output out //output
+
+);
+
+assign out = sel?b:a; 
+endmodule

@@ -1,0 +1,41 @@
+module lock(input clk, reset_in,b0_in,b1_in,
+output out, output [3:0] hex_display);
+
+wire reset, b0, bl; // synchronize push buttons, convert to pulses
+button b_reset (clk, reset_in, reset);
+
+button b_0(clk,b0_in,b0)7
+
+button b_1(clk,b1_in,b1);
+
+parameter S RESET = 0; parameter S_0= 1; // state assignments
+parameter S_01 parameter S_010 = 3;
+parameter S_0101 = 4; parameter S_01011 = 5;
+
+ 
+
+reg [2:0] state,next_state;
+
+always @(*) begin // implement state transition diagram
+if (reset) next_state = S_RESET;
+else case (state)
+
+   
+
+S_RESET: next_state = b0 ? S_0 b1: 2? S_RESET : state;
+S_0: next_state = b0 ? S_0 b1 2 S01 : state;
+S_01 next_state = b0 ? $010 : b1 ? S_RESET : state;
+S_010: next_state =b0?S 0 : bl? $0101 =: state;
+S_0101: next_state = b0 ? S010 : bl ? S_01011 : state;
+S_01011: next_state = b0 ?.S_0 : bl ? S_RESET : state;
+default: next_state = S_RESET; // handle unused states
+
+endcase
+
+end
+
+always @ (posedge clk) state <= next_state;
+
+assign out = (state == S_01011); // assign output: Moore machine
+assign hex_display = {1'b0, state}; // debugging
+endmodule
