@@ -1,0 +1,9 @@
+module top_module ( input clk, input d, output q );
+
+    
+    wire wire1, wire2;
+    
+    my_dff inst_1(clk, d,wire1);
+    my_dff inst_2(clk, wire1,wire2);
+    my_dff inst_3(clk, wire2,q);
+endmodule
