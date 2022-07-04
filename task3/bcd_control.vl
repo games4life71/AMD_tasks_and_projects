@@ -1,0 +1,24 @@
+module bcd_control(
+input [3:0] digit1,  //seconds 
+input [3:0] digit2,  //tens of seconds 
+input [3:0] digit3,  //minutes   
+input [3:0] digit4,  //tens of minutes
+input [1:0] counter,
+
+output reg [3:0] one_digit //choose only one digit by counter(select) 
+);
+
+always @(counter) begin
+    case(counter)
+
+    2'd0 : one_digit = digit1; //1st digit value 
+    2'd1: one_digit = digit2; //2nd digits value 
+    2'd2: one_digit = digit3; //3rd digit value
+    2'd3 :one_digit = digit4; //4th digit value 
+
+        
+    endcase
+end
+
+
+endmodule
