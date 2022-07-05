@@ -1,0 +1,17 @@
+Task 4 
+
+-	Este impartit in 6 segmente – 
+-	1st    6 biti  - opcode , determinca care componente ale procesorului se vor ocupa de instructiune 
+-	2nd and 3rd  5 biti – sursa registrilor (rs  si rt) pe care se stocheaza informatia 
+-	4th – 5 biti – destinatia registrului  
+-	!!!!! se folosesc 5 biti pentru ca numarul maxim este 31 
+-	5th – 5 biti shift amount – 
+-	6th – 6 biti determina care functie o sa fie pusa in aplicare 
+
+
+TIPURI DE INSTRUCTIUNI : 
+
+
+R-Type (Register Instruction)  -- instructiuni de baza 
+I-Type (Immediate Instruction)    -- 
+J-Type  (Jump Instruction)  -- se foloesec pentru a “sari” la o anumita adresa de memorie 
