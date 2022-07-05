@@ -1,6 +1,6 @@
 module counter(
 input clk_divided,
-input [2:0]type ; // 0 ,1,2,3 
+//input [2:0]type ; // 0 ,1,2,3 
 
 
 output next_enable
@@ -12,36 +12,44 @@ reg [] seconds = 0 ; //initializam cu 0
 
 always @(posedge clk_divided) begin
     
-    case(type)  
-
-    2'd0 :  begin  //we modify the seconds 
- if(seconds == 9)  begin 
-    seconds <=0;
-    //eneble the next one
-    next_enable <= 1;   
- end 
-    end 
-
-    2'd1 : begin //we modify tens of seconds 
+  
 if(seconds == 9)  begin 
-    seconds <=0;
-    //eneble the next one
-    next_enable <= 1;
- end 
+     seconds <=0;
+   //eneble the next one
+     next_enable <= 1;
+  end
+
+
+//     case(type)  
+
+//     2'd0 :  begin  //we modify the seconds 
+//  if(seconds == 9)  begin 
+//     seconds <=0;
+//     //eneble the next one
+//     next_enable <= 1;   
+//  end 
+//     end 
+
+//     2'd1 : begin //we modify tens of seconds 
+// if(seconds == 9)  begin 
+//     seconds <=0;
+//     //eneble the next one
+//     next_enable <= 1;
+//  end 
    
 
-    end 
+//     end 
 
-    2'd2 : begin //we modify minutes  
-
-
-    end 
-    2'd3:  begin //we modify tens of minutes 
+//     2'd2 : begin //we modify minutes  
 
 
-    end  
+//     end 
+//     2'd3:  begin //we modify tens of minutes 
 
-    endcase 
+
+//     end  
+
+   // endcase 
 end
 
 endmodule
