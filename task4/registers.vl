@@ -1,0 +1,20 @@
+//module for registers and data control unit 
+
+
+module registers(
+
+input [4:0] read_register1,  //rs the first regisrer 
+input [4:0] read_register2, //rt  the second register 
+input [4:0] write_register ,  //rd  the register we write data into 
+input [4:0] write_data,   //  the data we write 
+input reg_write_enable; 
+output [4:0] read_data1,   
+output [4:0] read_data2,
+
+);
+
+//logic for reading and writing the data and pass it to the next control level 
+
+
+
+endmodule
