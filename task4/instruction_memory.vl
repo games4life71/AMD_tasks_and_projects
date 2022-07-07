@@ -1,0 +1,30 @@
+//instruction memory module that receives an input of 32 bits and then split it 
+
+
+module Instruction_Memory
+(
+
+input [31:0]in, 
+output [5:0] opcode, 
+output [4:0] rs, 
+output [4:0] rt, 
+output [4:0] rd, 
+output [4:0] sh,
+output [5:0] fn
+
+);
+
+
+always @(*) begin
+    
+//split the instruction  
+
+opcode <= in[31:26];
+rs <= in[25:21];
+rt<=in[20:16];
+rd<=in[15:11];
+sh<=in[10:6];
+fn<=[5:0];
+end
+
+endmodule

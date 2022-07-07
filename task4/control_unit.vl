@@ -1,0 +1,109 @@
+//control unit module that returns what signals have the "HIGh" and which have the "LOW" signal 
+
+
+
+module control
+(
+
+input[5:0]instruction, 
+output reg_dest , jump , branch,memread, ALUop,memwrite, ALUsrc, regWrite 
+);
+
+
+always@(instruction) begin 
+
+
+case(instruction)
+
+6'b000000 : begin  
+    
+//add and substract case 
+
+   reg_dest <=1'b1;
+   
+   jump<=1'b0;
+
+   branch <= 1'b0;
+   
+   memread <= 1'b0;
+
+   memwrite <= 1'b0;
+
+   ALUop <= 1'b1;
+
+   ALUsrc <= 1'b0;
+
+   regWrite <= 1'b1;
+   
+end 
+
+6'b000010 : begin 
+//jump case      
+
+   reg_dest <=1'b1;
+   
+   jump<=1'b1;
+
+   branch <= 1'b0;
+   
+   memread <= 1'b0;
+
+   memwrite <= 1'b0;
+
+   ALUop <= 1'b0;
+
+   ALUsrc <= 1'b0;
+
+   regWrite <= 1'b0;
+
+end 
+
+
+6'b000100 : begin 
+//branch case  --- beq with immediate 
+
+   reg_dest <=1'b0;
+   
+   jump<=1'b0;
+
+   branch <= 1'b1;
+   
+   memread <= 1'b0;
+
+   memwrite <= 1'b0;
+
+   ALUop <= 1'b1;
+
+   ALUsrc <= 1'b0;
+
+   regWrite <= 1'b0;
+
+end 
+
+6'b101011 : begin 
+
+//sw ---store word 
+
+   reg_dest <=1'b0;
+   
+   jump<=1'b0;
+
+   branch <= 1'b0;
+   
+   memread <= 1'b0;
+
+   memwrite <= 1'b1;
+
+   ALUop <= 1'b0;
+
+   ALUsrc <= 1'b1;
+
+   regWrite <= 1'b0;
+
+end 
+
+endcase  
+
+end 
+
+endmodule

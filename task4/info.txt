@@ -1,0 +1,3 @@
+//desing idea - map for a simple x32 bit CPU . 
+
+
