@@ -1,0 +1,20 @@
+//Control for ALU module 
+
+
+    module alu_control(
+  
+     input en,  // enable or not 
+     input [5:0] fn // function code to determine which kind of operation is done by the  ALU (e.g. addtion , substraction etc )
+     output [5:0] fn_out
+    );
+
+
+always @(*) begin
+   
+   if(en) 
+    assign fn_out < = fn; //if the enable signal it's on high we pass over the fn bits 
+   
+end
+
+
+    endmodule

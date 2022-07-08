@@ -1,0 +1,21 @@
+//Arithmetic logic Unit module design 
+
+module ALU(
+
+input[4:0] read_data1, 
+input [4:0] read_data2, 
+output [4:0] result,
+output zero
+
+);
+
+
+
+
+//logic to implement the ALU functionality
+
+
+
+
+
+endmodule

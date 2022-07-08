@@ -1,0 +1,28 @@
+//multiplexor model 
+
+module mux_2to1(
+  //reg dest select 
+
+input sel; 
+input [4:0] in1, 
+input [4:0] in2, 
+output [4:0] out
+);
+
+//logic for selecting which input to be passed over 
+
+
+always @(in1 or in2 ) begin   //for each change in state o
+    
+
+case(sel)
+
+1'b0 :  assign out <= in1; //destination is first input   
+
+1'b1 : assign out <=in2; //destination is second input    
+
+endcase
+
+end
+
+endmodule 
