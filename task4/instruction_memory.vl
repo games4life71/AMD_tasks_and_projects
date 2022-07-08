@@ -2,29 +2,54 @@
 
 
 module Instruction_Memory
+#(parameter [1:0] type = 2'b00)   //00 for rtype 01 for itype 11 for jtype   
+
 (
 
 input [31:0]in, 
 output [5:0] opcode, 
-output [4:0] rs, 
-output [4:0] rt, 
-output [4:0] rd, 
-output [4:0] sh,
-output [5:0] fn
+output [4:0] rs = 0, 
+output [4:0] rt = 0 , 
+output [4:0] rd = 0, 
+output [4:0] sh = 0,
+output [5:0] fn = 0,
 
+output [25:0] jtype_out, //jump
+output [15:0] immediate // immediate bits for itype  
 );
 
 
 always @(*) begin
     
 //split the instruction  
+case(type)  
 
+ 2'b00 : begin      //rtype instruction 
 opcode <= in[31:26];
 rs <= in[25:21];
 rt<=in[20:16];
 rd<=in[15:11];
 sh<=in[10:6];
 fn<=[5:0];
-end
+
+ end 
+
+2'b01 : begin  //itype instruction 
+assign opcode <= in[ 31:26];
+assign  rs<= in[25:21];
+assign rd <= in[20:16];
+assign immediate<=[15:0];
+
+end 
+
+2'b11 : begin  //jtype instruction 
+assign opcode <= in[31:26]; 
+assign jtype_out <= in[25:0];
+end 
+
+endcase 
+
+end 
+
 
 endmodule
