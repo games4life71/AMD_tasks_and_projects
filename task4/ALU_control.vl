@@ -3,16 +3,56 @@
 
     module alu_control(
   
-     input en,  // enable or not 
+     input[1:0] alu_op  //type of operation to be done   add(Add for L/S)--- 00  , substract(Sub for beq)--- 01 ,decoded from function bits 10  
      input [5:0] fn // function code to determine which kind of operation is done by the  ALU (e.g. addtion , substraction etc )
-     output [5:0] fn_out
+     output [2:0] fn_out
     );
 
 
 always @(*) begin
    
-   if(en) 
-    assign fn_out < = fn; //if the enable signal it's on high we pass over the fn bits 
+   case(alu_op) 
+  
+  2'b00 :   begin   // add operations for load and store instruction 
+
+   assign fn_out<=3'b010;
+
+  end 
+
+
+  2'b01 : begin    //sub for beq operations 
+  
+    assign fn_out<= 3'b110; //tell the ALU it needs to substract 
+
+  end 
+
+
+  2'b10 : begin  // for logical and arithmetic type of instructions (Rtype)
+
+
+
+    //we have multiple function codes if the OP code is r-type  
+ 
+   case(fn)   
+
+    6'b100001 :  begin // addu operation  function code  
+       //pass over the addu operation to ALU 
+
+        assign fn_out <= 3'b010; 
+
+    end 
+
+    6'b100100 : begin    //and operation function code 
+     assign fn_out <= 3'b000; 
+
+    end 
+  endcase
+
+
+  end 
+
+   endcase 
+   
    
 end
 
