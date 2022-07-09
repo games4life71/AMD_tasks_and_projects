@@ -6,7 +6,8 @@ module control
 (
 
 input[5:0]instruction, 
-output reg_dest , jump , branch,memread, ALUop,memwrite, ALUsrc, regWrite 
+output reg_dest , jump , branch,memread,memwrite, ALUsrc, regWrite ,
+output [1:0] ALU_op
 );
 
 
@@ -29,7 +30,7 @@ case(instruction)
 
    memwrite <= 1'b0;
 
-   ALUop <= 1'b1;
+   ALUop <= 1'b10;  //it s a rtype instruction 
 
    ALUsrc <= 1'b0;
 
@@ -50,7 +51,7 @@ end
 
    memwrite <= 1'b0;
 
-   ALUop <= 1'b0;
+   ALUop <= 1'b00; // we dont need ALU_op in jump instruction
 
    ALUsrc <= 1'b0;
 
@@ -72,7 +73,7 @@ end
 
    memwrite <= 1'b0;
 
-   ALUop <= 1'b1;
+   ALUop <= 1'b01; //beq type of instruction 
 
    ALUsrc <= 1'b0;
 
@@ -107,3 +108,11 @@ endcase
 end 
 
 endmodule
+
+
+module a   (
+    input a ,input b ,
+    output c
+);
+
+endmodule //control_unit
