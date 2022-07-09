@@ -1,0 +1,34 @@
+//32 bit adder that adds two 32 bit inputs 
+
+module full_adder(
+
+input a,
+ input b,
+ input cin,
+ output sum,
+ output cout
+);
+
+wire sum1;  //wires to connect inputs and outputs 
+wire carry1;
+//first half adder we connect to the second half adder 
+half_adder ha1
+(
+.a(a),  //input a to first input of half adder 
+.b(b), //input b to second input of half adder 
+.sum1(sum),  //sum output from 1st half adder connect to 2nd input of second half adder 
+.carry1(cout)  //carry out1 connect to and gate 
+);
+
+wire carry2;
+half_Adder ha2 
+( 
+    sum1(b),  //second input is sum from first half adder 
+    cin(a), //first input is carry in from previos half adder 
+    sum(sum), //output of the full adder is sum 
+    carry2(cout) //carry 2 connect to and gate 
+);
+
+assign cout = and(carry1,carry2); //assign full adder carry out by an AND gate 
+
+endmodule 
