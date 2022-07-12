@@ -1,0 +1,122 @@
+//top module -- -connect all modules to create a single cycle datapath 
+
+module top();
+
+wire[31:0] pc_in ;
+wire [31:0] pc_out;
+
+program_counter PC (pc_in,pc_out);
+
+
+//wires to connect instruction memory module    
+
+wire [5:0] opcode;
+wire[4:0] rs; 
+wire[4:0] rt;
+wire[4:0] rd;
+wire[4:0] sh;
+wire[5:0] fn;
+
+wire[25:0] jtype_out;
+wire[15:0] immediate;
+
+Instruction_Memory inst_mem
+(
+.in(pc_in),
+.opcode(opcode),
+.rs(rs),
+.rt(rt),
+.rd(rd),
+.sh(sh),
+.fn(fn),
+.jtype_out(jtype_out),
+.immediate(immediate)
+);
+
+//control unit wires 
+
+wire reg_dest , jump , branch,memread,memwrite, ALUsrc, regWrite; 
+wire[1:0] ALU_op;
+
+control control_unit
+(
+.opcode(instruction), //connect opcode wire to instruction input of control unit 
+.reg_dest(reg_dest),
+.jump(jump),
+.branch(branch),
+.memread(memread),
+.memwrite(memwrite),
+.ALUsrc(ALUsrc),
+.regWrite(regWrite),
+.ALU_op(ALU_op),
+);
+
+//multiplex for write register 
+
+wire [4:0] write_register;
+mux_2to1 #(size =5) muxReg
+(
+.sel(reg_dest),
+.in1(rd),
+.in2(sh),
+.out(write_register)
+);
+
+wire[31:0] read_data1;
+wire[31:0] read_data2;
+//connect input and outputs 
+registers reg_file
+(
+.read_register1(rs),
+.read_register2(rt),
+.write_register(write_register),
+.read_data1(read_data1),
+.read_data2(read_data2)
+//TODO connect write data !!! 
+);
+
+
+
+wire[31:0] sign_extended;
+sign_extend32 sgn_ext
+(
+.in(immediate),
+.out(sign_extended)
+);
+
+
+//mux before ALU to select which inputs it gets for second operand --- the data read from register or jump adress  
+wire[31:0] muxALU_out;
+mux_2to1 #(size=32) muxALU_2to1
+(
+.sel(ALUsrc),
+.in1(read_data2),
+.in2(sign_extended),
+.out(muxALU_out)
+);
+
+//ALU control wires ---> connect to input at ALU 
+wire[2:0] fn_out;
+alu_control alu_cntrl
+(
+.alu_op(ALU_op),
+.fn(fn),
+.fn_out(fn_out)
+);
+
+
+wire[4:0] alu_result;
+wire alu_zero;
+ALU alu
+(
+.read_data1(read_data1),
+.read_data2(read_data2),
+.fn_code(fn_out),
+.result(alu_result),
+.zero(alu_zero)
+);
+
+//TODO complete the other modules : data memory , and ADDers that compute the next instruction adrres 
+
+
+endmodule
