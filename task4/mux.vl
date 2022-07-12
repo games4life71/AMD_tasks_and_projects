@@ -1,12 +1,14 @@
 //multiplexor model 
 
-module mux_2to1(
+module mux_2to1
+#(parameter size)
+(
   //reg dest select 
 
 input sel; 
-input [4:0] in1, 
-input [4:0] in2, 
-output [4:0] out
+input [size-1:0] in1, 
+input [size-1:0] in2, 
+output [size-1:0] out
 );
 
 //logic for selecting which input to be passed over 
