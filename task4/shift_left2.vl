@@ -7,6 +7,9 @@ output[31:0] out
 );
 
 
+in <= in <<2;
+assign out <= in;
+
 
 
 
