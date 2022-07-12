@@ -2,19 +2,52 @@
 
 module ALU(
 
-input[4:0] read_data1, 
-input [4:0] read_data2, 
-output [4:0] result,
-output zero
-
+input[31:0] read_data1, 
+input [31:0] read_data2,
+input[2:0] fn_code,  
+output [4:0] result, 
+output zero 
 );
 
-
-
+//???? how to get the value from register adress ????
 
 //logic to implement the ALU functionality
+///zero output is on high if values are equal and on low if they are not equal 
+always @(*) begin
+    
+    case(fn_code) 
+
+      
+    3'b010 : begin //add operation  
+   //add the values from the two source registers and output it to result 
+
+     
 
 
+    end 
+
+
+    3'b110 : begin  //substact operation 
+  //substract rs from rt for branh operations 
+
+
+
+
+    end 
+
+   3'b000 :  begin  //and operation 
+
+
+
+
+   end   
+
+
+    endcase 
+
+
+
+end
 
 
 
